@@ -3,6 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 100px;
 }
 
 .board {
@@ -23,3 +24,6 @@ body {
     border: 1px solid black;
 }
 
+.grid.colored {
+    background-color: black;
+}
