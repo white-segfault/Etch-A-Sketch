@@ -40,7 +40,7 @@ grids.forEach((grid) => {
     grid.addEventListener('mouseenter', function(e) {
         color_grid(grid);
         e.stopPropagation();
-    })
+    }, {capture: false, once:true});
 })
 
 
