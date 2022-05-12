@@ -7,13 +7,36 @@ body {
     gap: 20px;
 }
 
+
 .header {
     font-size: 32px;
 }
 
 
+.features{
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    padding-right: 150px;
+}
 
+.user {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-top: 300px;
+    gap: 5px;
+}
 
+.user .title {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.user button {
+    padding: 4px 8px;
+    margin-right: 4px;
+}
 
 .board {
     width: 800px;
@@ -37,3 +60,4 @@ body {
 .grid.colored {
     background-color: black;
 }
+
