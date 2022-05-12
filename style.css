@@ -3,13 +3,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 100px;
+    padding: 10px;
+    gap: 20px;
 }
+
+.header {
+    font-size: 32px;
+}
+
+
+
+
 
 .board {
     width: 800px;
     height: 800px;
-    border: 1px solid black;
+    border: 3px solid #a8dadc;
     display: flex;
     flex-direction: column;
 }
@@ -21,7 +30,8 @@ body {
 
 .grid {
     flex: 1;
-    border: 1px solid black;
+    border: 1px solid #457b9d;
+    border-radius: 1px;
 }
 
 .grid.colored {
