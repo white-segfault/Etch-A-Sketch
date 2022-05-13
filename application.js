@@ -1,19 +1,29 @@
-let squareLength = 16;
-
-const body = document.querySelector("body");
+let squareLength = 16; // initialise square length
 const board = document.querySelector(".board");
 let rainbowOn = false;
+start_board();
+configure_functionality();
 
-for (let i = 0; i < squareLength; ++i) {
-    const rows = document.createElement('div');
-    rows.className = "rows";
+// Initialises a new game
+function start_board() {
+    for (let i = 0; i < squareLength; ++i) {
+        const rows = document.createElement('div');
+        rows.className = "rows";
 
-    for (let j = 0; j < squareLength; ++j) {
-        const grid = document.createElement('div');
-        grid.className = "grid";
-        rows.appendChild(grid);
+        for (let j = 0; j < squareLength; ++j) {
+            const grid = document.createElement('div');
+            grid.className = "grid";
+            rows.appendChild(grid);
+        }
+        board.appendChild(rows);
     }
-    board.appendChild(rows);
+}
+
+// Ends the game by clearing the board
+function end_board() {
+    while (board.firstChild) {
+        board.removeChild(board.firstChild)
+    }
 }
 
 // Generates a random color and returns its corresponding string representation
@@ -35,31 +45,39 @@ function color_grid_black(grid) {
     grid.style.backgroundColor = "black";
 }
 
-const grids = document.querySelectorAll(".board > .rows > .grid");
-const buttonBlack = document.querySelector("button.black");
-const buttonRainbow =  document.querySelector("button.rainbow");
-const resize = document.querySelector(".sizes > button")
+// Initialises the setting that allows functionality of the game
+function configure_functionality() {
+    const grids = document.querySelectorAll(".board > .rows > .grid");
+    const buttonBlack = document.querySelector("button.black");
+    const buttonRainbow =  document.querySelector("button.rainbow");
 
-buttonRainbow.addEventListener('click', function(e) {
-    rainbowOn = true;
-    e.stopPropagation();
-});
-
-buttonBlack.addEventListener('click', function(e) {
-    rainbowOn = false;
-    e.stopPropagation();
-});
-
-grids.forEach((grid) => {
-    grid.addEventListener('mouseenter', function(e) {
-        if (rainbowOn) {
-            color_grid_rainbow(grid);
-        } else {
-            color_grid_black(grid);
-        }
+    buttonRainbow.addEventListener('click', function(e) {
+        rainbowOn = true;
         e.stopPropagation();
-    }, {capture: false, once:true});
-});
+    });
 
+    buttonBlack.addEventListener('click', function(e) {
+        rainbowOn = false;
+        e.stopPropagation();
+    });
 
+    grids.forEach((grid) => {
+        grid.addEventListener('mouseenter', function(e) {
+            if (rainbowOn) {
+                color_grid_rainbow(grid);
+            } else {
+                color_grid_black(grid);
+            }
+            e.stopPropagation();
+        }, {capture: false, once:true});
+    });
+}
+
+const resize = document.querySelector(".sizes > button");
+resize.addEventListener('click', function(e) {
+    squareLength = prompt("Please enter the number of squares per side for the new board:");
+    end_board();
+    start_board();
+    configure_functionality();
+})
 
