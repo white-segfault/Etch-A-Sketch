@@ -1,4 +1,4 @@
-let squareLength = 16; // initialise square length
+let squareLength = 16; // initial square length
 const board = document.querySelector(".board");
 let rainbowOn = false;
 start_board();
@@ -73,11 +73,18 @@ function configure_functionality() {
     });
 }
 
-const resize = document.querySelector(".sizes > button");
+const resize = document.querySelector(".sizes > button.resize");
+const restart = document.querySelector(".sizes > button.restart");
 resize.addEventListener('click', function(e) {
-    squareLength = prompt("Please enter the number of squares per side for the new board:");
+    squareLength = +prompt("Please enter the number of squares per side for the new board:");
+    squareLength = Math.min(200, squareLength);
     end_board();
     start_board();
     configure_functionality();
 })
 
+restart.addEventListener('click', function(e) {
+    end_board();
+    start_board();
+    configure_functionality();
+})

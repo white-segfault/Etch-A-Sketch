@@ -1,5 +1,4 @@
 body {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,11 +6,9 @@ body {
     gap: 20px;
 }
 
-
 .header {
     font-size: 32px;
 }
-
 
 .features{
     display: flex;
@@ -38,6 +35,11 @@ body {
     margin-right: 4px;
 }
 
+.user .sizes .text,
+.user .color_mode .text {
+    margin-bottom: 3px;
+}
+
 .board {
     width: 800px;
     height: 800px;
@@ -60,4 +62,3 @@ body {
 .grid.colored {
     background-color: black;
 }
-
